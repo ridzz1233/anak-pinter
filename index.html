@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#160d20">
+<title>Kalau Boleh Jujur... 💌</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+:root {
+    --pink: #ff8eb7;
+    --pink-light: #ffd0e1;
+    --bg: #160d20;
+    --white: #fff8fc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 22px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    background:
+        radial-gradient(ellipse at 15% 15%, #52213e 0%, transparent 42%),
+        radial-gradient(ellipse at 85% 85%, #351b48 0%, transparent 45%),
+        var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+}
+
+#particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    bottom: -40px;
+    opacity: 0;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    10% { opacity: .6; }
+    100% {
+        transform: translateY(-115vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    z-index: 1;
+}
+
+.top-label {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #e9b4ce;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+}
+
+.card {
+    position: relative;
+    padding: 32px 23px;
+    border-radius: 28px;
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.105),
+        rgba(255,255,255,.035)
+    );
+    border: 1px solid rgba(255,255,255,.13);
+    box-shadow: 0 25px 80px #00000045;
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    top: -140px;
+    right: -100px;
+    background: #ff8eb722;
+    filter: blur(30px);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.screen {
+    animation: enter .55s ease both;
+}
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.heart-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 23px;
+    font-size: 42px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffb2ce33, #ffb2ce08);
+    border: 1px solid #ffb2ce33;
+    box-shadow: 0 0 45px #ff75ad19;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+h1 em {
+    color: var(--pink);
+    font-weight: 500;
+}
+
+.subtitle {
+    color: #d9c5d5;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 23px 0;
+    color: #e6a3c1;
+    font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #ffffff1b;
+}
+
+button {
+    width: 100%;
+    border: 0;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.primary {
+    color: #3c1530;
+    padding: 16px;
+    border-radius: 15px;
+    background: linear-gradient(110deg, #ffd0e1, #ff8eb7);
+    box-shadow: 0 8px 30px #ff75ad20;
+}
+
+.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 35px #ff75ad45;
+}
+
+.primary:active {
+    transform: scale(.98);
+}
+
+.privacy {
+    margin-top: 17px;
+    text-align: center;
+    color: #a993aa;
+    font-size: 10px;
+}
+
+.progress-area {
+    margin-bottom: 28px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    color: #cdb8ce;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.progress {
+    height: 3px;
+    border-radius: 5px;
+    background: #ffffff17;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #ff75ad, #ffd0e1);
+    transition: width .4s ease;
+}
+
+.question-emoji {
+    text-align: center;
+    font-size: 37px;
+    margin: 7px 0 20px;
+    filter: drop-shadow(0 0 12px #ff8eb733);
+}
+
+.question {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.question-sub {
+    text-align: center;
+    font-size: 12px;
+    color: #cbb7cb;
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.answers {
+    display: grid;
+    gap: 11px;
+}
+
+.answer {
+    padding: 15px 14px;
+    border: 1px solid #ffffff1b;
+    border-radius: 14px;
+    background: #ffffff08;
+    color: #f9eaf3;
+    text-align: left;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.answer:hover {
+    background: #ff8eb718;
+    border-color: #ff8eb77a;
+    transform: translateX(3px);
+}
+
+.answer.selected {
+    border-color: var(--pink);
+    background: #ff8eb725;
+}
+
+.bottom-note {
+    text-align: center;
+    color: #a993aa;
+    font-size: 10px;
+    margin-top: 23px;
+}
+
+.ending-icon {
+    font-size: 55px;
+    text-align: center;
+    margin: 5px 0 22px;
+}
+
+.ending-text {
+    color: #e5d0e1;
+    font-size: 13px;
+    line-height: 2;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.ending-quote {
+    border-left: 2px solid var(--pink);
+    padding: 14px 16px;
+    background: #ff8eb70b;
+    border-radius: 0 12px 12px 0;
+    color: #ffd2e4;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 22px 0;
+}
+
+.secondary {
+    margin-top: 11px;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid #ffffff20;
+    background: transparent;
+    color: #f9ddeb;
+}
+
+.secondary:hover {
+    background: #ffffff0d;
+}
+
+.footer {
+    text-align: center;
+    color: #a993aa;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-top: 18px;
+}
+
+@media (max-width: 380px) {
+    .card { padding: 27px 18px; }
+    h1 { font-size: 30px; }
+    .question { font-size: 22px; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<main class="container">
+    <div class="top-label">A little heart-to-heart · ♡</div>
+
+    <div class="card">
+
+        <!-- HALAMAN PEMBUKA -->
+        <section class="screen" id="intro">
+            <div class="heart-icon">💌</div>
+
+            <h1>Kalau boleh<br><em>jujur...</em></h1>
+
+            <p class="subtitle">
+                Ada beberapa hal yang kadang lebih mudah
+                ditanyakan lewat hati.<br><br>
+                Ini bukan tentang jawaban yang sempurna,
+                melainkan tentang apa yang benar-benar kamu rasakan.
+            </p>
+
+            <div class="divider">sebuah cerita kecil</div>
+
+            <p class="subtitle" style="margin-bottom:24px">
+                Sepuluh pertanyaan sederhana.<br>
+                Jawablah tanpa perlu menjadi orang lain.
+            </p>
+
+            <button class="primary" onclick="startQuiz()">
+                Mulai cerita <span>→</span>
+            </button>
+
+            <div class="privacy">
+                ♡ Tidak ada jawaban benar atau salah
+            </div>
+        </section>
+
+
+        <!-- HALAMAN PERTANYAAN -->
+        <section class="screen hidden" id="quiz">
+            <div class="progress-area">
+                <div class="progress-info">
+                    <span id="stepLabel">PERTANYAAN 01</span>
+                    <span id="stepNumber">01 / 10</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="question-emoji" id="emoji">🌷</div>
+
+            <div class="question" id="question"></div>
+
+            <p class="question-sub" id="questionSub">
+                Pilih jawaban yang paling dekat dengan hatimu.
+            </p>
+
+            <div class="answers" id="answers"></div>
+
+            <div class="bottom-note">
+                Take your time. No pressure. ♡
+            </div>
+        </section>
+
+
+        <!-- HALAMAN AKHIR -->
+        <section class="screen hidden" id="ending">
+            <div class="ending-icon" id="endingEmoji">💗</div>
+
+            <h1>Terima kasih sudah<br><em>mau jujur.</em></h1>
+
+            <p class="ending-text" id="endingText">
+                Kadang, berani mengakui apa yang kita rasakan
+                adalah hal yang paling sulit.
+            </p>
+
+            <div class="ending-quote" id="endingQuote">
+                "Semoga kita selalu punya keberanian untuk jujur,
+                dan hati yang cukup lapang untuk menerima."
+            </div>
+
+            <p class="subtitle" style="margin-bottom:22px">
+                Apa pun jawabanmu, tidak ada yang perlu kamu sesali.
+                Perasaanmu tetap berharga. 🤍
+            </p>
+
+            <button class="primary" onclick="showSecret()">
+                Ada satu hal lagi... 💌
+            </button>
+
+            <button class="secondary" onclick="shareResult()">
+                Bagikan cerita ini ↗
+            </button>
+        </section>
+
+
+        <!-- PESAN RAHASIA -->
+        <section class="screen hidden" id="secret">
+            <div class="heart-icon">🫶</div>
+
+            <h1>Satu hal yang<br><em>perlu kamu tahu.</em></h1>
+
+            <p class="ending-text">
+                Kita tidak selalu tahu apa yang ada di hati orang lain.
+                Terkadang, senyuman menyimpan cerita,
+                dan diam menyimpan banyak kata.<br><br>
+
+                Tapi kalau ada sesuatu yang ingin kamu sampaikan,
+                semoga suatu hari kamu punya keberanian untuk
+                mengatakannya dengan tulus.
+            </p>
+
+            <div class="ending-quote">
+                "Yang tulus tidak harus terburu-buru.
+                Yang indah tidak harus dipaksakan."
+            </div>
+
+            <p class="subtitle">
+                Terima kasih sudah meluangkan sedikit waktumu
+                untuk halaman kecil ini. ♡
+            </p>
+
+            <button class="primary" style="margin-top:24px"
+                    onclick="restart()">
+                Baca lagi dari awal ↺
+            </button>
+        </section>
+
+    </div>
+
+    <div class="footer">MADE WITH A LITTLE BIT OF HEART ♡</div>
+</main>
+
+<script>
+const questions = [
+    {
+        emoji: "🌷",
+        question: "Pernahkah seseorang membuat harimu lebih baik hanya dengan kehadirannya?",
+        sub: "Kadang hal sederhana punya arti yang besar.",
+        answers: [
+            "Iya, ada seseorang seperti itu.",
+            "Pernah, tapi aku belum pernah mengatakannya.",
+            "Mungkin ada, aku baru menyadarinya.",
+            "Sepertinya belum."
+        ]
+    },
+    {
+        emoji: "💭",
+        question: "Kalau kamu tiba-tiba teringat seseorang, biasanya apa yang kamu lakukan?",
+        sub: "Tidak perlu mencari jawaban yang paling keren.",
+        answers: [
+            "Senyum sendiri tanpa sadar.",
+            "Membuka chat dan membaca percakapan lama.",
+            "Berharap bisa berbicara dengannya.",
+            "Membiarkannya menjadi pikiran sesaat."
+        ]
+    },
+    {
+        emoji: "🦋",
+        question: "Pernahkah kamu merasa gugup hanya karena seseorang menyapamu?",
+        sub: "Hal kecil, tapi kadang rasanya berbeda.",
+        answers: [
+            "Pernah, dan rasanya susah dijelaskan.",
+            "Iya, terutama kalau orang itu spesial.",
+            "Pernah, tapi aku menyembunyikannya.",
+            "Belum pernah merasakannya."
+        ]
+    },
+    {
+        emoji: "🌙",
+        question: "Apa yang paling membuatmu merasa dekat dengan seseorang?",
+        sub: "Kedekatan bukan cuma soal seberapa sering bertemu.",
+        answers: [
+            "Obrolan yang jujur dan nyaman.",
+            "Perhatian kecil yang tulus.",
+            "Bisa menjadi diri sendiri tanpa berpura-pura.",
+            "Saling mendukung saat keadaan sulit."
+        ]
+    },
+    {
+        emoji: "🤍",
+        question: "Kalau seseorang menyukaimu diam-diam, apa yang ingin kamu lakukan?",
+        sub: "Bayangkan kamu benar-benar berada di situasi itu.",
+        answers: [
+            "Aku ingin tahu siapa orangnya.",
+            "Aku akan mencoba mengenalnya lebih dekat.",
+            "Aku ingin berteman dulu tanpa terburu-buru.",
+            "Aku akan menghargainya, meski belum tentu membalas."
+        ]
+    },
+    {
+        emoji: "💌",
+        question: "Menurutmu, mana yang lebih berarti?",
+        sub: "Pilih yang paling sesuai dengan isi hatimu.",
+        answers: [
+            "Seseorang yang selalu ada saat dibutuhkan.",
+            "Seseorang yang mengerti meski aku tidak banyak bicara.",
+            "Seseorang yang jujur meski kenyataannya sulit.",
+            "Seseorang yang mendukungku menjadi lebih baik."
+        ]
+    },
+    {
+        emoji: "🥀",
+        question: "Pernahkah kamu menyimpan perasaan karena takut semuanya berubah?",
+        sub: "Tidak semua hal mudah untuk diungkapkan.",
+        answers: [
+            "Iya, aku takut kehilangan kedekatan itu.",
+            "Pernah, karena aku belum yakin dengan perasaanku.",
+            "Aku lebih memilih jujur daripada terus bertanya-tanya.",
+            "Aku masih belajar memahami perasaanku sendiri."
+        ]
+    },
+    {
+        emoji: "✨",
+        question: "Kalau kamu bisa mengatakan satu hal tanpa merasa malu, apa yang ingin kamu katakan?",
+        sub: "Bayangkan tidak ada yang menghakimimu.",
+        answers: [
+            "Sebenarnya, kamu cukup berarti buatku.",
+            "Aku senang setiap kali bisa berbicara denganmu.",
+            "Terima kasih karena sudah hadir di hidupku.",
+            "Aku ingin mengenalmu lebih jauh."
+        ]
+    },
+    {
+        emoji: "🫶",
+        question: "Kalau ternyata perasaanmu tidak berbalas, apa yang akan kamu lakukan?",
+        sub: "Perasaan yang tulus juga berarti menghargai pilihan orang lain.",
+        answers: [
+            "Aku akan menerima dan menghormati keputusannya.",
+            "Aku mungkin sedih, tapi perlahan akan belajar ikhlas.",
+            "Aku tetap menghargai kenangan yang pernah ada.",
+            "Aku akan fokus memperbaiki diriku dan masa depanku."
+        ]
+    },
+    {
+        emoji: "❤️",
+        question: "Pertanyaan terakhir... adakah seseorang yang ingin kamu ajak bicara lebih lama, tanpa alasan khusus?",
+        sub: "Tidak harus menyebutkan nama. Cukup jujur pada dirimu sendiri.",
+        answers: [
+            "Iya, ada seseorang yang langsung terlintas.",
+            "Ada, tapi aku belum berani mendekatinya.",
+            "Mungkin ada, aku masih mencari tahu.",
+            "Untuk sekarang, aku ingin fokus pada diriku sendiri."
+        ]
+    }
+];
+
+let current = 0;
+let responses = [];
+
+function switchScreen(id) {
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.add("hidden");
+    });
+
+    const target = document.getElementById(id);
+    target.classList.remove("hidden");
+
+    target.style.animation = "none";
+    void target.offsetWidth;
+    target.style.animation = "enter .55s ease both";
+}
+
+function startQuiz() {
+    current = 0;
+    responses = [];
+    switchScreen("quiz");
+    renderQuestion();
+}
+
+function renderQuestion() {
+    const q = questions[current];
+
+    document.getElementById("stepLabel").textContent =
+        `PERTANYAAN ${String(current + 1).padStart(2, "0")}`;
+
+    document.getElementById("stepNumber").textContent =
+        `${String(current + 1).padStart(2, "0")} / ${questions.length}`;
+
+    document.getElementById("progressFill").style.width =
+        `${((current + 1) / questions.length) * 100}%`;
+
+    document.getElementById("emoji").textContent = q.emoji;
+    document.getElementById("question").textContent = q.question;
+    document.getElementById("questionSub").textContent = q.sub;
+
+    const answers = document.getElementById("answers");
+    answers.innerHTML = "";
+
+    q.answers.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.className = "answer";
+        button.textContent = answer;
+
+        button.addEventListener("click", () => {
+            responses.push({
+                question: q.question,
+                answer: answer
+            });
+
+            button.classList.add("selected");
+
+            setTimeout(() => {
+                current++;
+
+                if (current < questions.length) {
+                    renderQuestion();
+                } else {
+                    finishQuiz();
+                }
+            }, 220);
+        });
+
+        answers.appendChild(button);
+    });
+}
+
+function finishQuiz() {
+    switchScreen("ending");
+
+    document.getElementById("endingText").textContent =
+        "Kamu sudah menyelesaikan sepuluh pertanyaan ini. " +
+        "Mungkin ada jawaban yang mudah, mungkin ada yang membuatmu berpikir. " +
+        "Apa pun itu, terima kasih sudah meluangkan waktu untuk jujur pada dirimu sendiri.";
+
+    document.getElementById("endingQuote").textContent =
+        "“Tidak semua perasaan harus segera memiliki jawaban. " +
+        "Kadang, memahami hati sendiri adalah langkah pertama.”";
+}
+
+function showSecret() {
+    switchScreen("secret");
+}
+
+function shareResult() {
+    const message =
+        "Aku baru saja mencoba web 'Kalau Boleh Jujur...' 💌\n\n" +
+        "Isinya pertanyaan sederhana tentang perasaan, " +
+        "kejujuran, dan hal-hal yang kadang sulit diungkapkan.\n\n" +
+        "Coba luangkan sedikit waktu untuk menjawabnya dengan jujur. 🤍";
+
+    if (navigator.share) {
+        navigator.share({
+            title: "Kalau Boleh Jujur 💌",
+            text: message
+        }).catch(() => {});
+    } else {
+        const url =
+            "https://wa.me/?text=" + encodeURIComponent(message);
+
+        window.open(url, "_blank");
+    }
+}
+
+function restart() {
+    current = 0;
+    responses = [];
+    switchScreen("intro");
+}
+
+// Hati kecil yang melayang di latar belakang
+const particleContainer = document.getElementById("particles");
+const symbols = ["♡", "✧", "♥", "·"];
+
+function createParticle() {
+    const p = document.createElement("span");
+    p.className = "particle";
+    p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+    p.style.left = Math.random() * 100 + "%";
+    p.style.fontSize = (10 + Math.random() * 16) + "px";
+    p.style.color = Math.random() > 0.5 ? "#ff9dc3" : "#e9c2f5";
+    p.style.animationDuration = (8 + Math.random() * 8) + "s";
+
+    particleContainer.appendChild(p);
+
+    setTimeout(() => p.remove(), 16000);
+}
+
+setInterval(createParticle, 650);
+
+</script>
+</body>
+</html>
