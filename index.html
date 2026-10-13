@@ -3,742 +3,607 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#160d20">
-<title>Kalau Boleh Jujur... 💌</title>
+<title>Sesuatu yang Ingin Aku Sampaikan</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
 
 :root {
-    --pink: #ff8eb7;
-    --pink-light: #ffd0e1;
-    --bg: #160d20;
-    --white: #fff8fc;
+    --bg: #090a0d;
+    --text: #f4f0ef;
+    --muted: #b9b7bd;
+    --pink: #f16b83;
+    --border: rgba(255,255,255,.15);
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    min-height: 100vh;
-    padding: 22px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow-x: hidden;
-    background:
-        radial-gradient(ellipse at 15% 15%, #52213e 0%, transparent 42%),
-        radial-gradient(ellipse at 85% 85%, #351b48 0%, transparent 45%),
-        var(--bg);
-    color: var(--white);
+    background: var(--bg);
+    color: var(--text);
     font-family: 'DM Sans', sans-serif;
+    line-height: 1.8;
+    overflow-x: hidden;
 }
 
-#particles {
+button, a {
+    font: inherit;
+}
+
+.progress {
     position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.particle {
-    position: absolute;
-    bottom: -40px;
-    opacity: 0;
-    animation: floatUp linear forwards;
-}
-
-@keyframes floatUp {
-    10% { opacity: .6; }
-    100% {
-        transform: translateY(-115vh) rotate(35deg);
-        opacity: 0;
-    }
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: var(--pink);
+    z-index: 99;
 }
 
 .container {
-    position: relative;
-    width: 100%;
-    max-width: 440px;
-    z-index: 1;
+    width: min(1100px, 88%);
+    margin: auto;
 }
 
-.top-label {
-    text-align: center;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: #e9b4ce;
-    margin-bottom: 18px;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 3px;
     text-transform: uppercase;
 }
 
-.card {
-    position: relative;
-    padding: 32px 23px;
-    border-radius: 28px;
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,.105),
-        rgba(255,255,255,.035)
-    );
-    border: 1px solid rgba(255,255,255,.13);
-    box-shadow: 0 25px 80px #00000045;
-    backdrop-filter: blur(20px);
-    overflow: hidden;
+.brand {
+    color: var(--pink);
 }
 
-.card::before {
-    content: "";
-    position: absolute;
-    width: 220px;
-    height: 220px;
-    top: -140px;
-    right: -100px;
-    background: #ff8eb722;
-    filter: blur(30px);
-    border-radius: 50%;
-    pointer-events: none;
-}
-
-.screen {
-    animation: enter .55s ease both;
-}
-
-@keyframes enter {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hidden {
-    display: none !important;
-}
-
-.heart-icon {
+.hero {
+    min-height: 75vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 88px;
-    height: 88px;
-    margin: 0 auto 23px;
-    font-size: 42px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #ffb2ce33, #ffb2ce08);
-    border: 1px solid #ffb2ce33;
-    box-shadow: 0 0 45px #ff75ad19;
-    animation: heartbeat 2s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(90deg, rgba(8,9,13,.25), rgba(8,9,13,.15)),
+        linear-gradient(0deg, var(--bg), transparent 65%),
+        radial-gradient(ellipse at 65% 60%, #683d49 0%, #30202c 35%, #10121b 72%);
 }
 
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.07); }
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    right: 17%;
+    top: 17%;
+    border-radius: 50%;
+    background: #f3c7c7;
+    box-shadow: 0 0 60px rgba(241,107,131,.15);
+    opacity: .8;
+    clip-path: inset(0 0 0 35%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 80px 0 100px;
+    max-width: 680px;
+}
+
+.label {
+    color: var(--pink);
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 1.2;
 }
 
 h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 34px;
-    font-weight: 500;
-    line-height: 1.25;
-    text-align: center;
-    margin-bottom: 15px;
+    font-size: clamp(42px, 7vw, 76px);
+    letter-spacing: -1px;
 }
 
 h1 em {
     color: var(--pink);
-    font-weight: 500;
 }
 
-.subtitle {
-    color: #d9c5d5;
-    text-align: center;
-    font-size: 13px;
-    line-height: 1.9;
+.hero p {
+    margin-top: 25px;
+    color: #d0cbd0;
+    max-width: 420px;
+    font-size: 14px;
 }
 
-.divider {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 23px 0;
-    color: #e6a3c1;
+.scroll-link {
+    display: inline-block;
+    margin-top: 32px;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--pink);
+    padding-bottom: 5px;
     font-size: 12px;
 }
 
-.divider::before,
-.divider::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #ffffff1b;
+section.story {
+    padding: 75px 0;
+    border-top: 1px solid var(--border);
 }
 
-button {
-    width: 100%;
-    border: 0;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: .25s ease;
-}
-
-.primary {
-    color: #3c1530;
-    padding: 16px;
-    border-radius: 15px;
-    background: linear-gradient(110deg, #ffd0e1, #ff8eb7);
-    box-shadow: 0 8px 30px #ff75ad20;
-}
-
-.primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 35px #ff75ad45;
-}
-
-.primary:active {
-    transform: scale(.98);
-}
-
-.privacy {
-    margin-top: 17px;
-    text-align: center;
-    color: #a993aa;
+.section-label {
+    color: var(--pink);
+    letter-spacing: 3px;
     font-size: 10px;
+    margin-bottom: 18px;
 }
 
-.progress-area {
-    margin-bottom: 28px;
+h2 {
+    font-size: clamp(30px, 4vw, 43px);
+    margin-bottom: 23px;
 }
 
-.progress-info {
-    display: flex;
-    justify-content: space-between;
-    color: #cdb8ce;
-    font-size: 11px;
-    margin-bottom: 10px;
+.story p {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 690px;
+    margin-bottom: 15px;
 }
 
-.progress {
-    height: 3px;
-    border-radius: 5px;
-    background: #ffffff17;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    width: 0;
-    background: linear-gradient(90deg, #ff75ad, #ffd0e1);
-    transition: width .4s ease;
-}
-
-.question-emoji {
-    text-align: center;
-    font-size: 37px;
-    margin: 7px 0 20px;
-    filter: drop-shadow(0 0 12px #ff8eb733);
-}
-
-.question {
+.quote {
+    border-left: 2px solid var(--pink);
+    padding: 10px 0 10px 22px;
+    margin: 30px 0;
     font-family: 'Playfair Display', serif;
-    font-size: 25px;
-    line-height: 1.5;
-    text-align: center;
-    font-weight: 500;
-    margin-bottom: 12px;
+    font-style: italic;
+    color: #f2d9df;
+    font-size: 21px;
+    max-width: 580px;
 }
 
-.question-sub {
-    text-align: center;
-    font-size: 12px;
-    color: #cbb7cb;
-    line-height: 1.8;
-    margin-bottom: 24px;
-}
-
-.answers {
+.two-columns {
     display: grid;
-    gap: 11px;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+}
+
+.note {
+    margin-top: 25px;
+    padding: 18px;
+    background: rgba(241,107,131,.07);
+    border: 1px solid rgba(241,107,131,.2);
+    border-radius: 8px;
+    font-size: 12px;
+    color: #e2cfd4;
+}
+
+.final {
+    position: relative;
+    overflow: hidden;
+    padding: 90px 0 65px;
+    background:
+        linear-gradient(0deg, #090a0d 0%, rgba(9,10,13,.5) 100%),
+        radial-gradient(ellipse at 50% 100%, #683d49 0%, #18121b 65%);
+}
+
+.final h2 {
+    font-size: clamp(40px, 6vw, 64px);
+    max-width: 650px;
+}
+
+.final .description {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 520px;
+    margin: 20px 0 30px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-top: 30px;
 }
 
 .answer {
-    padding: 15px 14px;
-    border: 1px solid #ffffff1b;
-    border-radius: 14px;
-    background: #ffffff08;
-    color: #f9eaf3;
-    text-align: left;
-    line-height: 1.6;
-    font-weight: 400;
+    padding: 15px 23px;
+    border-radius: 8px;
+    border: 1px solid var(--pink);
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: .25s;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+.answer.yes {
+    background: var(--pink);
+    color: #17090d;
 }
 
 .answer:hover {
-    background: #ff8eb718;
-    border-color: #ff8eb77a;
-    transform: translateX(3px);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(241,107,131,.16);
 }
 
-.answer.selected {
-    border-color: var(--pink);
-    background: #ff8eb725;
-}
-
-.bottom-note {
-    text-align: center;
-    color: #a993aa;
+.small {
     font-size: 10px;
-    margin-top: 23px;
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
 }
 
-.ending-icon {
-    font-size: 55px;
+footer {
+    padding: 30px 0;
+    border-top: 1px solid var(--border);
     text-align: center;
-    margin: 5px 0 22px;
-}
-
-.ending-text {
-    color: #e5d0e1;
-    font-size: 13px;
-    line-height: 2;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.ending-quote {
-    border-left: 2px solid var(--pink);
-    padding: 14px 16px;
-    background: #ff8eb70b;
-    border-radius: 0 12px 12px 0;
-    color: #ffd2e4;
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 17px;
-    line-height: 1.7;
-    margin: 22px 0;
-}
-
-.secondary {
-    margin-top: 11px;
-    padding: 14px;
-    border-radius: 14px;
-    border: 1px solid #ffffff20;
-    background: transparent;
-    color: #f9ddeb;
-}
-
-.secondary:hover {
-    background: #ffffff0d;
-}
-
-.footer {
-    text-align: center;
-    color: #a993aa;
+    color: #89858d;
     font-size: 10px;
-    letter-spacing: 1px;
-    margin-top: 18px;
+    letter-spacing: 3px;
 }
 
-@media (max-width: 380px) {
-    .card { padding: 27px 18px; }
-    h1 { font-size: 30px; }
-    .question { font-size: 22px; }
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .8s, transform .8s;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    color: var(--pink);
+    pointer-events: none;
+    z-index: 100;
+    animation: float 5s linear forwards;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+    15% { opacity: .7; }
+    100% {
+        transform: translateY(-105vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+@media(max-width: 650px) {
+    .container {
+        width: 88%;
+    }
+
+    nav {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .hero {
+        min-height: 75vh;
+    }
+
+    .hero::before {
+        width: 85px;
+        height: 85px;
+        right: 12%;
+        top: 12%;
+    }
+
+    section.story {
+        padding: 55px 0;
+    }
+
+    .two-columns {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .answer {
+        width: 100%;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div id="particles"></div>
+<div class="progress" id="progress"></div>
+
+<header class="container">
+    <nav>
+        <div class="brand">♥ &nbsp; Untuk kamu</div>
+        <div>Sebuah cerita yang ingin aku sampaikan</div>
+    </nav>
+</header>
+
+<!-- PEMBUKA -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="label">Ada sesuatu yang ingin aku sampaikan</div>
+
+            <h1>
+                Ada sesuatu<br>
+                yang ingin aku<br>
+                <em>sampaikan...</em>
+            </h1>
+
+            <p>
+                Bukan sekadar kata-kata biasa, tapi sesuatu yang sudah
+                lama ada di dalam hati aku. Aku harap kamu mau membaca
+                ini sampai akhir.
+            </p>
+
+            <a href="#bagian1" class="scroll-link">
+                ↓ &nbsp; SCROLL UNTUK MEMBACA
+            </a>
+        </div>
+    </div>
+</section>
 
 <main class="container">
-    <div class="top-label">A little heart-to-heart · ♡</div>
 
-    <div class="card">
+    <!-- BAGIAN 1 -->
+    <section class="story reveal" id="bagian1">
+        <div class="section-label">01. &nbsp; TENTANG PERASAAN INI</div>
 
-        <!-- HALAMAN PEMBUKA -->
-        <section class="screen" id="intro">
-            <div class="heart-icon">💌</div>
+        <h2>Aku mulai punya<br><em>perasaan sama kamu.</em></h2>
 
-            <h1>Kalau boleh<br><em>jujur...</em></h1>
+        <p>
+            Mungkin ini terdengar sederhana, tapi ini bukan hal yang bisa
+            aku ungkapkan dengan mudah. Aku sudah cukup lama memendamnya,
+            dan sekarang aku merasa sudah waktunya untuk jujur.
+        </p>
 
-            <p class="subtitle">
-                Ada beberapa hal yang kadang lebih mudah
-                ditanyakan lewat hati.<br><br>
-                Ini bukan tentang jawaban yang sempurna,
-                melainkan tentang apa yang benar-benar kamu rasakan.
-            </p>
+        <p>
+            Bukan karena aku bosan, bukan juga karena paksaan.
+            Ini benar-benar datang dari hati, dan semakin hari
+            aku semakin yakin dengan perasaan ini.
+        </p>
 
-            <div class="divider">sebuah cerita kecil</div>
+        <div class="quote">
+            "Aku nggak tahu kapan tepatnya kamu jadi penting,
+            tapi yang pasti... kamu sekarang sangat berarti."
+        </div>
+    </section>
 
-            <p class="subtitle" style="margin-bottom:24px">
-                Sepuluh pertanyaan sederhana.<br>
-                Jawablah tanpa perlu menjadi orang lain.
-            </p>
+    <!-- BAGIAN 2 -->
+    <section class="story reveal">
+        <div class="section-label">02. &nbsp; TENTANG KAMU</div>
 
-            <button class="primary" onclick="startQuiz()">
-                Mulai cerita <span>→</span>
-            </button>
+        <h2>Kamu itu spesial.</h2>
 
-            <div class="privacy">
-                ♡ Tidak ada jawaban benar atau salah
+        <p>
+            Aku suka caramu menjadi diri sendiri, cara kamu melihat
+            hal-hal dari sudut pandang yang berbeda, kesederhanaanmu,
+            dan hal-hal kecil yang tanpa sadar membuat aku nyaman.
+        </p>
+
+        <p>
+            Aku ingin mengenal kamu lebih jauh — bukan hanya dari apa
+            yang terlihat, tapi juga dari pikiran, mimpi, cerita,
+            dan hal-hal yang mungkin belum pernah kamu ceritakan
+            ke orang lain.
+        </p>
+
+        <div class="quote">
+            "Aku nggak ingin mengenalmu hanya dari jauh.
+            Aku ingin tahu siapa kamu, lebih dari yang terlihat."
+        </div>
+    </section>
+
+    <!-- BAGIAN 3 -->
+    <section class="story reveal">
+        <div class="section-label">03. &nbsp; TENTANG KITA</div>
+
+        <h2>Aku nggak mau sekadar bermain perasaan.</h2>
+
+        <p>
+            Aku mengungkapkan ini bukan untuk membuat kamu merasa harus
+            membalas perasaanku. Aku juga nggak menjanjikan hal-hal besar
+            yang belum tentu bisa aku buktikan sekarang.
+        </p>
+
+        <p>
+            Tapi kalau suatu saat kita memilih untuk bersama, aku ingin
+            hubungan yang sehat: saling jujur, saling menghargai,
+            saling mendukung, dan tetap punya ruang untuk berkembang.
+        </p>
+
+        <p>
+            Aku percaya hubungan yang baik bukan soal harus selalu
+            bersama setiap waktu, melainkan tentang kepercayaan dan
+            bagaimana kita memperlakukan satu sama lain.
+        </p>
+    </section>
+
+    <!-- BAGIAN 4 -->
+    <section class="story reveal">
+        <div class="section-label">04. &nbsp; APA PUN JAWABANMU</div>
+
+        <div class="two-columns">
+            <div>
+                <h2>Aku tetap menghargai keputusanmu.</h2>
+
+                <p>
+                    Aku tahu perasaan nggak bisa dipaksakan.
+                    Kamu punya hak untuk menentukan apa yang kamu
+                    rasakan dan apa yang kamu inginkan.
+                </p>
             </div>
-        </section>
 
+            <div>
+                <p>
+                    Kalau kamu belum merasakan hal yang sama, aku akan
+                    tetap menghormati itu. Aku nggak ingin kamu menjawab
+                    hanya karena merasa nggak enak kepadaku.
+                </p>
 
-        <!-- HALAMAN PERTANYAAN -->
-        <section class="screen hidden" id="quiz">
-            <div class="progress-area">
-                <div class="progress-info">
-                    <span id="stepLabel">PERTANYAAN 01</span>
-                    <span id="stepNumber">01 / 10</span>
+                <p>
+                    Aku memilih jujur karena lebih baik menyampaikan
+                    perasaan dengan baik daripada terus bertanya-tanya.
+                </p>
+
+                <div class="note">
+                    ♥ &nbsp; Aku nggak meminta jawaban yang menyenangkan
+                    hatiku. Aku hanya berharap jawaban yang benar-benar
+                    kamu rasakan.
                 </div>
-
-                <div class="progress">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="question-emoji" id="emoji">🌷</div>
-
-            <div class="question" id="question"></div>
-
-            <p class="question-sub" id="questionSub">
-                Pilih jawaban yang paling dekat dengan hatimu.
-            </p>
-
-            <div class="answers" id="answers"></div>
-
-            <div class="bottom-note">
-                Take your time. No pressure. ♡
-            </div>
-        </section>
-
-
-        <!-- HALAMAN AKHIR -->
-        <section class="screen hidden" id="ending">
-            <div class="ending-icon" id="endingEmoji">💗</div>
-
-            <h1>Terima kasih sudah<br><em>mau jujur.</em></h1>
-
-            <p class="ending-text" id="endingText">
-                Kadang, berani mengakui apa yang kita rasakan
-                adalah hal yang paling sulit.
-            </p>
-
-            <div class="ending-quote" id="endingQuote">
-                "Semoga kita selalu punya keberanian untuk jujur,
-                dan hati yang cukup lapang untuk menerima."
-            </div>
-
-            <p class="subtitle" style="margin-bottom:22px">
-                Apa pun jawabanmu, tidak ada yang perlu kamu sesali.
-                Perasaanmu tetap berharga. 🤍
-            </p>
-
-            <button class="primary" onclick="showSecret()">
-                Ada satu hal lagi... 💌
-            </button>
-
-            <button class="secondary" onclick="shareResult()">
-                Bagikan cerita ini ↗
-            </button>
-        </section>
-
-
-        <!-- PESAN RAHASIA -->
-        <section class="screen hidden" id="secret">
-            <div class="heart-icon">🫶</div>
-
-            <h1>Satu hal yang<br><em>perlu kamu tahu.</em></h1>
-
-            <p class="ending-text">
-                Kita tidak selalu tahu apa yang ada di hati orang lain.
-                Terkadang, senyuman menyimpan cerita,
-                dan diam menyimpan banyak kata.<br><br>
-
-                Tapi kalau ada sesuatu yang ingin kamu sampaikan,
-                semoga suatu hari kamu punya keberanian untuk
-                mengatakannya dengan tulus.
-            </p>
-
-            <div class="ending-quote">
-                "Yang tulus tidak harus terburu-buru.
-                Yang indah tidak harus dipaksakan."
-            </div>
-
-            <p class="subtitle">
-                Terima kasih sudah meluangkan sedikit waktumu
-                untuk halaman kecil ini. ♡
-            </p>
-
-            <button class="primary" style="margin-top:24px"
-                    onclick="restart()">
-                Baca lagi dari awal ↺
-            </button>
-        </section>
-
-    </div>
-
-    <div class="footer">MADE WITH A LITTLE BIT OF HEART ♡</div>
 </main>
 
+<!-- PERTANYAAN TERAKHIR -->
+<section class="final reveal" id="pertanyaan">
+    <div class="container">
+
+        <div class="section-label">05. &nbsp; PERTANYAAN TERAKHIR</div>
+
+        <h2>Kamu mau jadi<br>kekasih aku?</h2>
+
+        <p class="description">
+            Aku sudah menyampaikan apa yang ingin aku katakan.
+            Sekarang, aku ingin mendengar jawabanmu.
+            Nggak perlu terburu-buru. Pikirkan dengan tenang, ya.
+        </p>
+
+        <div class="buttons">
+
+            <button class="answer yes" onclick="kirimJawaban('Iya, aku mau')">
+                ♥ &nbsp; Iya, aku mau
+                <span class="small">(Kirim ke WhatsApp)</span>
+            </button>
+
+            <button class="answer" onclick="kirimJawaban('Maaf, aku belum bisa')">
+                ♡ &nbsp; Maaf, aku belum bisa
+                <span class="small">(Kirim ke WhatsApp)</span>
+            </button>
+
+        </div>
+
+        <p id="status" class="description" aria-live="polite"></p>
+
+    </div>
+</section>
+
+<footer>
+    ♥ &nbsp; TERIMA KASIH SUDAH MEMBACA INI &nbsp; ♥
+</footer>
+
 <script>
-const questions = [
-    {
-        emoji: "🌷",
-        question: "Pernahkah seseorang membuat harimu lebih baik hanya dengan kehadirannya?",
-        sub: "Kadang hal sederhana punya arti yang besar.",
-        answers: [
-            "Iya, ada seseorang seperti itu.",
-            "Pernah, tapi aku belum pernah mengatakannya.",
-            "Mungkin ada, aku baru menyadarinya.",
-            "Sepertinya belum."
-        ]
-    },
-    {
-        emoji: "💭",
-        question: "Kalau kamu tiba-tiba teringat seseorang, biasanya apa yang kamu lakukan?",
-        sub: "Tidak perlu mencari jawaban yang paling keren.",
-        answers: [
-            "Senyum sendiri tanpa sadar.",
-            "Membuka chat dan membaca percakapan lama.",
-            "Berharap bisa berbicara dengannya.",
-            "Membiarkannya menjadi pikiran sesaat."
-        ]
-    },
-    {
-        emoji: "🦋",
-        question: "Pernahkah kamu merasa gugup hanya karena seseorang menyapamu?",
-        sub: "Hal kecil, tapi kadang rasanya berbeda.",
-        answers: [
-            "Pernah, dan rasanya susah dijelaskan.",
-            "Iya, terutama kalau orang itu spesial.",
-            "Pernah, tapi aku menyembunyikannya.",
-            "Belum pernah merasakannya."
-        ]
-    },
-    {
-        emoji: "🌙",
-        question: "Apa yang paling membuatmu merasa dekat dengan seseorang?",
-        sub: "Kedekatan bukan cuma soal seberapa sering bertemu.",
-        answers: [
-            "Obrolan yang jujur dan nyaman.",
-            "Perhatian kecil yang tulus.",
-            "Bisa menjadi diri sendiri tanpa berpura-pura.",
-            "Saling mendukung saat keadaan sulit."
-        ]
-    },
-    {
-        emoji: "🤍",
-        question: "Kalau seseorang menyukaimu diam-diam, apa yang ingin kamu lakukan?",
-        sub: "Bayangkan kamu benar-benar berada di situasi itu.",
-        answers: [
-            "Aku ingin tahu siapa orangnya.",
-            "Aku akan mencoba mengenalnya lebih dekat.",
-            "Aku ingin berteman dulu tanpa terburu-buru.",
-            "Aku akan menghargainya, meski belum tentu membalas."
-        ]
-    },
-    {
-        emoji: "💌",
-        question: "Menurutmu, mana yang lebih berarti?",
-        sub: "Pilih yang paling sesuai dengan isi hatimu.",
-        answers: [
-            "Seseorang yang selalu ada saat dibutuhkan.",
-            "Seseorang yang mengerti meski aku tidak banyak bicara.",
-            "Seseorang yang jujur meski kenyataannya sulit.",
-            "Seseorang yang mendukungku menjadi lebih baik."
-        ]
-    },
-    {
-        emoji: "🥀",
-        question: "Pernahkah kamu menyimpan perasaan karena takut semuanya berubah?",
-        sub: "Tidak semua hal mudah untuk diungkapkan.",
-        answers: [
-            "Iya, aku takut kehilangan kedekatan itu.",
-            "Pernah, karena aku belum yakin dengan perasaanku.",
-            "Aku lebih memilih jujur daripada terus bertanya-tanya.",
-            "Aku masih belajar memahami perasaanku sendiri."
-        ]
-    },
-    {
-        emoji: "✨",
-        question: "Kalau kamu bisa mengatakan satu hal tanpa merasa malu, apa yang ingin kamu katakan?",
-        sub: "Bayangkan tidak ada yang menghakimimu.",
-        answers: [
-            "Sebenarnya, kamu cukup berarti buatku.",
-            "Aku senang setiap kali bisa berbicara denganmu.",
-            "Terima kasih karena sudah hadir di hidupku.",
-            "Aku ingin mengenalmu lebih jauh."
-        ]
-    },
-    {
-        emoji: "🫶",
-        question: "Kalau ternyata perasaanmu tidak berbalas, apa yang akan kamu lakukan?",
-        sub: "Perasaan yang tulus juga berarti menghargai pilihan orang lain.",
-        answers: [
-            "Aku akan menerima dan menghormati keputusannya.",
-            "Aku mungkin sedih, tapi perlahan akan belajar ikhlas.",
-            "Aku tetap menghargai kenangan yang pernah ada.",
-            "Aku akan fokus memperbaiki diriku dan masa depanku."
-        ]
-    },
-    {
-        emoji: "❤️",
-        question: "Pertanyaan terakhir... adakah seseorang yang ingin kamu ajak bicara lebih lama, tanpa alasan khusus?",
-        sub: "Tidak harus menyebutkan nama. Cukup jujur pada dirimu sendiri.",
-        answers: [
-            "Iya, ada seseorang yang langsung terlintas.",
-            "Ada, tapi aku belum berani mendekatinya.",
-            "Mungkin ada, aku masih mencari tahu.",
-            "Untuk sekarang, aku ingin fokus pada diriku sendiri."
-        ]
-    }
-];
+/* Nomor WhatsApp tujuan, format internasional tanpa tanda + */
+const NOMOR_WHATSAPP = "6281919180371";
 
-let current = 0;
-let responses = [];
+/* Progress bar */
+window.addEventListener("scroll", () => {
+    const total =
+        document.documentElement.scrollHeight - window.innerHeight;
 
-function switchScreen(id) {
-    document.querySelectorAll(".screen").forEach(screen => {
-        screen.classList.add("hidden");
+    const persen = total > 0
+        ? window.scrollY / total * 100
+        : 0;
+
+    document.getElementById("progress").style.width = persen + "%";
+});
+
+/* Animasi bagian saat digulir */
+const pengamat = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+        }
     });
+}, { threshold: 0.12 });
 
-    const target = document.getElementById(id);
-    target.classList.remove("hidden");
+document.querySelectorAll(".reveal").forEach(bagian => {
+    pengamat.observe(bagian);
+});
 
-    target.style.animation = "none";
-    void target.offsetWidth;
-    target.style.animation = "enter .55s ease both";
-}
+/* Kirim jawaban ke WhatsApp */
+function kirimJawaban(jawaban) {
+    const setuju = confirm(
+        "Kamu memilih: " + jawaban +
+        "\n\nLanjutkan ke WhatsApp untuk mengirim jawaban?"
+    );
 
-function startQuiz() {
-    current = 0;
-    responses = [];
-    switchScreen("quiz");
-    renderQuestion();
-}
+    if (!setuju) return;
 
-function renderQuestion() {
-    const q = questions[current];
+    const pesan =
+        "Hai, aku sudah membaca surat yang kamu buat.\n\n" +
+        "Jawabanku: " + jawaban + ".\n\n" +
+        "Terima kasih sudah jujur menyampaikan perasaanmu.";
 
-    document.getElementById("stepLabel").textContent =
-        `PERTANYAAN ${String(current + 1).padStart(2, "0")}`;
+    const link =
+        "https://wa.me/" + NOMOR_WHATSAPP +
+        "?text=" + encodeURIComponent(pesan);
 
-    document.getElementById("stepNumber").textContent =
-        `${String(current + 1).padStart(2, "0")} / ${questions.length}`;
+    document.getElementById("status").textContent =
+        "WhatsApp sedang dibuka. Tekan tombol Kirim di WhatsApp agar jawabannya sampai.";
 
-    document.getElementById("progressFill").style.width =
-        `${((current + 1) / questions.length) * 100}%`;
+    window.location.href = link;
 
-    document.getElementById("emoji").textContent = q.emoji;
-    document.getElementById("question").textContent = q.question;
-    document.getElementById("questionSub").textContent = q.sub;
-
-    const answers = document.getElementById("answers");
-    answers.innerHTML = "";
-
-    q.answers.forEach((answer, index) => {
-        const button = document.createElement("button");
-        button.className = "answer";
-        button.textContent = answer;
-
-        button.addEventListener("click", () => {
-            responses.push({
-                question: q.question,
-                answer: answer
-            });
-
-            button.classList.add("selected");
-
-            setTimeout(() => {
-                current++;
-
-                if (current < questions.length) {
-                    renderQuestion();
-                } else {
-                    finishQuiz();
-                }
-            }, 220);
-        });
-
-        answers.appendChild(button);
-    });
-}
-
-function finishQuiz() {
-    switchScreen("ending");
-
-    document.getElementById("endingText").textContent =
-        "Kamu sudah menyelesaikan sepuluh pertanyaan ini. " +
-        "Mungkin ada jawaban yang mudah, mungkin ada yang membuatmu berpikir. " +
-        "Apa pun itu, terima kasih sudah meluangkan waktu untuk jujur pada dirimu sendiri.";
-
-    document.getElementById("endingQuote").textContent =
-        "“Tidak semua perasaan harus segera memiliki jawaban. " +
-        "Kadang, memahami hati sendiri adalah langkah pertama.”";
-}
-
-function showSecret() {
-    switchScreen("secret");
-}
-
-function shareResult() {
-    const message =
-        "Aku baru saja mencoba web 'Kalau Boleh Jujur...' 💌\n\n" +
-        "Isinya pertanyaan sederhana tentang perasaan, " +
-        "kejujuran, dan hal-hal yang kadang sulit diungkapkan.\n\n" +
-        "Coba luangkan sedikit waktu untuk menjawabnya dengan jujur. 🤍";
-
-    if (navigator.share) {
-        navigator.share({
-            title: "Kalau Boleh Jujur 💌",
-            text: message
-        }).catch(() => {});
-    } else {
-        const url =
-            "https://wa.me/?text=" + encodeURIComponent(message);
-
-        window.open(url, "_blank");
+    if (jawaban === "Iya, aku mau") {
+        buatHati();
     }
 }
 
-function restart() {
-    current = 0;
-    responses = [];
-    switchScreen("intro");
+/* Animasi hati sederhana */
+function buatHati() {
+    for (let i = 0; i < 12; i++) {
+        setTimeout(() => {
+            const hati = document.createElement("div");
+
+            hati.className = "heart";
+            hati.textContent = Math.random() > 0.5 ? "♥" : "♡";
+            hati.style.left = Math.random() * 100 + "vw";
+            hati.style.fontSize = (14 + Math.random() * 14) + "px";
+            hati.style.animationDuration = (4 + Math.random() * 3) + "s";
+
+            document.body.appendChild(hati);
+
+            setTimeout(() => hati.remove(), 7500);
+        }, i * 120);
+    }
 }
-
-// Hati kecil yang melayang di latar belakang
-const particleContainer = document.getElementById("particles");
-const symbols = ["♡", "✧", "♥", "·"];
-
-function createParticle() {
-    const p = document.createElement("span");
-    p.className = "particle";
-    p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-
-    p.style.left = Math.random() * 100 + "%";
-    p.style.fontSize = (10 + Math.random() * 16) + "px";
-    p.style.color = Math.random() > 0.5 ? "#ff9dc3" : "#e9c2f5";
-    p.style.animationDuration = (8 + Math.random() * 8) + "s";
-
-    particleContainer.appendChild(p);
-
-    setTimeout(() => p.remove(), 16000);
-}
-
-setInterval(createParticle, 650);
-
 </script>
+
 </body>
 </html>
